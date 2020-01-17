@@ -24,4 +24,8 @@ from hood import views as user_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('hood.urls')),
+    url(r'^accounts/',include('registration.backends.simple.urls')),
+    path('accounts/profile/',user_views.profile,name='profile'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='registration/logout.html'),name='logout'),
+
 ]
