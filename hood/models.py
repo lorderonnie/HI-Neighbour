@@ -8,7 +8,7 @@ class Profile(models.Model):
     user  = models.OneToOneField(User, on_delete = models.CASCADE, default='')
     profile_pic = models.ImageField(upload_to = 'media/', default='default.jpg')
     bio =models.TextField()
-    location = models.CharField(max_length=60)
+    neighbourhood = models.CharField(max_length=60)
     updated_on = models.DateTimeField(auto_now_add=True)
      
     def __str__(self):

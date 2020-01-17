@@ -24,7 +24,7 @@ def profile(request):
 
     return render(request,"profile/profile.html",{"profile":profile,"name":name})
 
-
+@login_required(login_url = '/accounts/login/')  
 def updateprofile(request):
        
     if request.method == 'POST':
@@ -40,7 +40,7 @@ def updateprofile(request):
     return render(request,"profile/updateprofile.html",{"form":form,"form1":form1})
 
 
-
+@login_required(login_url = '/accounts/login/')  
 def logout(request):
     logout(request)
     

@@ -13,6 +13,9 @@ h3{
     font-size:40px;
     color:silver;
 }
+b{
+    color:#704C5E;
+}
 </style>
 <body>
 <div class="container-fluid"><br><br>
@@ -26,7 +29,7 @@ h3{
         </div>
         <div class="col-md-6">
         <div class="card" style="height:370px;;background-color:transparent;">
-           <h3>Username: {{user.username}} </h3><br><br><br>
+           <h3><b>Username:</b> {{user.username}} </h3><br><br><br>
            {% if user.profile.bio %}
              <h5><b>Bio:</b> {{user.profile.bio}}</h5><br><br>
            {% else %}
@@ -35,14 +38,14 @@ h3{
             {% endif %}
             <div class="form-check-inline">
             <label class="form-check-label">
-                <input style="box-shadow:white;color:transparent;"type="checkbox" class="form-check-input" value="">Male
+                <input style="box-shadow:white;color:transparent;"type="checkbox" class="form-check-input" value=""><b>Male</b>
             </label>
             </div>
             <div class="form-check-inline">
             <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" value="">Female
+                <input type="checkbox" class="form-check-input" value=""><b>Female</b>
             </label>
-            </div>
+            </div><br>
             
             <form action="#" method="POST">
                 {% csrf_token%}
@@ -54,7 +57,8 @@ h3{
                     <option name="" value="Lodwar">Lodwar</option>
                     <option name="" value="Meru">Meru</option>
                 </select>
-            </form>
+            </form><br>
+            <p><b>Neighbourhood:</b>{{user.profile.neighbourhood}}</p>
             <a style="margin-top:44px;" href="{% url 'updateprofile'%}" class="btn btn-outline-success btn-sm"  name="Update" >Update</a>
         </div>
         </div>
