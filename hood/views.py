@@ -17,12 +17,12 @@ def home(request):
 
 
 
+@login_required(login_url = '/accounts/login/')  
 def profile(request):
     name = request.user
     profile = Profile.get_profile_by_name(name)
-    projects= Projects.get_project_by_name(name)
 
-    return render(request,"profile/profile.html",{"profile":profile,"projects":projects,"name":name})
+    return render(request,"profile/profile.html",{"profile":profile,"name":name})
 
 
 def updateprofile(request):

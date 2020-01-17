@@ -1,0 +1,61 @@
+{% extends 'profile/base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% block content %}
+<style>
+body{
+    background-image:url(https://wolf-wallpapers.pro/images/dark-wolf-wallpapers-wallpaper-cave-63-wolf-wallpapers.pro.jpg);
+    background-color:#59656F;
+    background-size:cover;
+    color:#D1C6DD;
+}
+h3{
+    font-size:40px;
+    color:silver;
+}
+</style>
+<body>
+<div class="container-fluid"><br><br>
+    <div class="row">
+        <div class="col-md-6">
+            {% if user.profile.profile_pic %}
+                <img style="background-color: transparent;border-radius:60%; margin-left:70px;" src=" {{user.profile.profile_pic.url}} " alt="dp" width="400px" height="400px">
+            {% else %}
+                <img src="" alt="dp">
+            {% endif %}
+        </div>
+        <div class="col-md-6">
+        <div class="card" style="height:370px;;background-color:transparent;">
+           <h3>Username: {{user.username}} </h3><br><br><br>
+           {% if user.profile.bio %}
+             <h5><b>Bio:</b> {{user.profile.bio}}</h5><br><br>
+           {% else %}
+                <p>You have no bio yet</p>
+
+            {% endif %}
+            <div class="form-check-inline">
+            <label class="form-check-label">
+                <input style="box-shadow:white;color:transparent;"type="checkbox" class="form-check-input" value="">Male
+            </label>
+            </div>
+            <div class="form-check-inline">
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" value="">Female
+            </label>
+            </div>
+            
+            <a style="margin-top:44px;" href="{% url 'updateprofile'%}" class="btn btn-outline-success btn-sm"  name="Update" >Update</a>
+        </div>
+        </div>
+    </div><br><br>
+    <div class="row">
+            <div class="col-md-2"></div>
+           
+            <div class="col-md-2"></div>
+
+    </div>
+</div>
+</body>
+
+
+{% endblock %}

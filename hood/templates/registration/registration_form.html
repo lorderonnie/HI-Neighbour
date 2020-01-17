@@ -3,14 +3,18 @@
 {% block content %}
 <style>
   body{
-        background-image:url();
-        background-color:#;
+        background-image:url(https://st4.depositphotos.com/14051716/22141/v/600/depositphotos_221413556-stock-video-cool-neon-glitch-welcome-text.jpg);
+        background-color:#889696;
         background-size:cover;
         color:white;
     }
+    h1{
+        text-align:center;
+    }
 </style>
 <body>
-<h1>SIGN-UP</h1>
+<h1>SIGN-UP</h1><br><br>
+<div class="container">
 <div id="strand">
     <form method="POST" action="/accounts/register/" >
         {% csrf_token%}
@@ -22,6 +26,7 @@
             <h3>{{message}}</h3>
         {% endfor %}
     </div>
+</div>
 </div>
 </body>
 

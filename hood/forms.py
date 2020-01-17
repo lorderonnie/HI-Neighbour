@@ -25,7 +25,7 @@ class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         exclude =[
-            'updated_on',
+            'location',
             'user',
 
 ]
