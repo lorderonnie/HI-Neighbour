@@ -2,6 +2,11 @@ from django.shortcuts import get_object_or_404, redirect ,render
 from django.http import HttpResponse
 from .models import Profile
 from .forms import UpdateProfileForm,UserUpdateform
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+
+
+
 # Create your views here.
 
 def home(request):
