@@ -44,6 +44,17 @@ h3{
             </label>
             </div>
             
+            <form action="#" method="POST">
+                {% csrf_token%}
+                <select class="btn btn-danger"name="design">
+                    <option name="">Location</option>
+                    <option name="" value="Nairobi">Nairobi</option>
+                    <option name="" value="Lamu">Lamu</option>
+                    <option name="" value="Kisumu">Kisumu</option>
+                    <option name="" value="Lodwar">Lodwar</option>
+                    <option name="" value="Meru">Meru</option>
+                </select>
+            </form>
             <a style="margin-top:44px;" href="{% url 'updateprofile'%}" class="btn btn-outline-success btn-sm"  name="Update" >Update</a>
         </div>
         </div>
