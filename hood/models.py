@@ -25,7 +25,27 @@ class Profile(models.Model):
         return  name 
     
 
+class Post(models.Model):
+    picture = models.ImageField(upload_to= 'media/')
+    caption= models.CharField(max_length=50)
+    details = models.TextField(blank=True)
+    neighbourhood = models.CharField(max_length=60)
+    user = models.ForeignKey(User,on_delete = models.CASCADE)
+    
 
+    @classmethod
+    def get_all_posts(cls):
+        posts = cls.objects.all()
+        return posts
 
+    @classmethod
+    def get_post_by_name(cls,name):
+        posts = cls.objects.filter(name= name)
+        return posts  
+    def save_post(self):
+        self.save()
+
+    def delete_post(self):
+        self.delete()
 
 

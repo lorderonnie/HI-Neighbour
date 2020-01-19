@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect ,render
 from django.http import HttpResponse
-from .models import Profile
-from .forms import UpdateProfileForm,UserUpdateform
+from .models import Profile,Post
+from .forms import UpdateProfileForm,UserUpdateform,NewPostForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
@@ -12,8 +12,8 @@ from django.contrib.auth.models import User
 def home(request):
     current_user = request.user
     users = User.objects.all()
-    
-    return render(request,'head/home.html',{"current_user":current_user,"users":users})
+    posts = Post.get_all_posts()
+    return render(request,'head/home.html',{"posts":posts,"current_user":current_user,"users":users})
 
 
 
@@ -39,6 +39,21 @@ def updateprofile(request):
         form1 = UserUpdateform(instance=request.user)
     return render(request,"profile/updateprofile.html",{"form":form,"form1":form1})
 
+@login_required(login_url = '/accounts/login/')
+def newpost(request):
+    if request.method=='POST':
+        form = NewPostForm(request.POST,request.FILES)
+        if form.is_valid():
+            post=form.save(commit=False)
+            post.user = request.user
+            post.save()
+
+            return redirect('home')
+
+    else:
+        form = NewPostForm()
+        
+    return render(request,'head/newpost.html',{'form':form})
 
 @login_required(login_url = '/accounts/login/')  
 def logout(request):

@@ -1,0 +1,32 @@
+{% extends 'head/base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<style>
+  body{
+        background-image:url(https://images4.alphacoders.com/101/1013845.jpg);
+        background-color:#1B2021;
+        background-size:cover;
+        color:white;
+    }
+</style>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <div class="card bg-transparent">
+          <div class="card-header"><h3><b><u>Make A Post!!</u></b></h3></div>
+          <div class="card-body">
+            <form action="{% url 'newpost' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <button type="submit" class="btn btn-outline-secondary">ENTER</button>
+            </form>
+          </div> 
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+<body>
+{% endblock content %}
