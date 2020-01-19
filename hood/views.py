@@ -77,7 +77,7 @@ def updateprofile(request):
     return render(request,"profile/updateprofile.html",{"form":form,"form1":form1})
 
 @login_required(login_url = '/accounts/login/')  
-def add_bussiness(request):
+def add_business(request):
     if request.method == 'POST':
         form = BusinessForm(request.POST)
         hood = request.POST.get('Location')
@@ -151,7 +151,7 @@ def logout(request):
 
 
 @login_required()
-def location_view(request,id):
+def locationview(request,id):
     
     current_user = Profile.objects.get(user=request.user)
     business = Business.objects.filter(neighbourhood = current_user.neighbourhood)
@@ -164,7 +164,6 @@ def location_view(request,id):
     hospital_list= Health.objects.filter(neighbourhood = location.name)
     police_list = Police.objects.filter(neighbourhood = location.name)
     business_list = Business.objects.filter(neighbourhood = location.name)
-    
     context = {
         'business':business,
         'police':police,
@@ -176,7 +175,68 @@ def location_view(request,id):
         'occupants':occupants,
         'hospital_list':hospital_list,
         'police_list':police_list,
-        'business_list':business_list
-        
+        'business_list':business_list  
     }
     return render(request,'head/hood.html',context)
+
+@login_required()
+def hospitalview(request,id):
+    Hospital = get_object_or_404(Health,id = id)
+    current_user = Profile.objects.get(user=request.user)
+    business = Business.objects.filter(neighbourhood = current_user.neighbourhood)
+    police = Police.objects.filter(neighbourhood = current_user.neighbourhood)
+    hospitals = Health.objects.filter(neighbourhood = current_user.neighbourhood)
+    user = request.user
+    locations = Neighbourhood.objects.all()
+    context = {
+        'business':business,
+        'police':police,
+        'hospitals':hospitals,
+        'user':user,
+        'current_user':current_user,
+        'locations':locations,
+        'Hospital':Hospital
+        
+    }
+    return render(request,'head/hospital.html',context)
+
+@login_required()
+def businessview(request,id):
+    bs = get_object_or_404(Business,id=id)
+    current_user = Profile.objects.get(user=request.user)
+    business = Business.objects.filter(neighbourhood = current_user.neighbourhood)
+    police = Police.objects.filter(neighbourhood = current_user.neighbourhood)
+    hospitals = Health.objects.filter(neighbourhood = current_user.neighbourhood)
+    user = request.user
+    locations = Neighbourhood.objects.all()
+    context = {
+        'business':business,
+        'police':police,
+        'hospitals':hospitals,
+        'user':user,
+        'current_user':current_user,
+        'locations':locations,
+        'bs':bs,
+    }
+    return render(request,'head/business.html',context)
+
+@login_required()
+def policeview(request,id):
+    plc = get_object_or_404(Police,id=id)
+    current_user = Profile.objects.get(user=request.user)
+    business = Business.objects.filter(neighbourhood = current_user.neighbourhood)
+    police = Police.objects.filter(neighbourhood = current_user.neighbourhood)
+    hospitals = Health.objects.filter(neighbourhood = current_user.neighbourhood)
+    user = request.user
+    locations = Neighbourhood.objects.all()
+    context = {
+        'business':business,
+        'police':police,
+        'hospitals':hospitals,
+        'user':user,
+        'current_user':current_user,
+        'locations':locations,
+        'plc':plc,
+    }
+    return render(request,'head/police.html',context)
+

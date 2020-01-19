@@ -33,15 +33,49 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:#020122;background-image:url(https://i.ytimg.com/vi/u-SHHwAJDY8/maxresdefault.jpg);">
           <a class="dropdown-item" href="{% url 'profile' %}"><i class="fa fa-fw fa-user"></i>Profile</a>
-          <a class="dropdown-item" href="#"><i class="fa fa-fw fa-envelope"></i>Contact</a>
-          <a class="dropdown-item" href="#"><i class="fa fa-globe"></i>Business</a>
+          <a href="{% url 'updateprofile'%}">Change hood</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="/accounts/logout"><i class="fas fa-sign-out-alt"></i>logout</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Business
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:#020122;background-image:url(https://i.ytimg.com/vi/u-SHHwAJDY8/maxresdefault.jpg);">
+          <a class="dropdown-item" href="{% url 'add_business'%}"><i class="fa fa-fw fa-envelope"></i>New business</a>
+                {% for bs in business %}
+                  <li><a href="/business/{{bs.id}}">{{bs.name}}</a></li>
+                  {% empty%}
+                  <li><a href="">No business found </a></li>
+                  {% endfor%}
         </div>
       </li>
       <li class="nav-item active" style="margin-right:10px;">
         <a class="nav-link" href="{% url 'newpost'%}"><i class="far fa-calendar-check"></i> Make-post </a>
       </li>
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Other references
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:#020122;background-image:url(https://i.ytimg.com/vi/u-SHHwAJDY8/maxresdefault.jpg);">
+          <a class="dropdown-item" href="#">Police</a>
+                  {% for pol in police %}
+                  <li><a href="/police/{{pol.id}}">{{pol.name}}</a></li>
+                  {% empty%}
+                  <p>none found </p>
+                  {% endfor %}
+          <a class="dropdown-item" href="#">Hospitals</a>
+                  {% for hosi in hospitals%}
+                  <li><a href="/hospital/{{hosi.id}}">{{hosi.name}} </a></li>
+                  {% endfor%}
+          <a class="dropdown-item" href="#">the Hood</a>
+                {% for location in locations%}
+                <li><a href="/neighbourhood/{{location.id}}">{{location.name}} </a></li>
+                {% endfor%}
+        </div>
+      </li>
+
     </ul>
     <form class="form-inline my-2 my-lg-0" style="float:right;">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
