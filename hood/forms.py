@@ -19,7 +19,7 @@ class Loginform(forms.Form):
                 raise forms.ValidationError('Incoreect password')
         return super(Loginform, self).clean(*args, **kwargs)
       
-class NewPostForm(forms.ModelForm):
+class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         exclude = ['user',

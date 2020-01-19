@@ -10,8 +10,11 @@ urlpatterns = [
     path('hood/profile/',views.profile,name="profile"),
     url(r'^updateprofile/$',views.updateprofile,name='updateprofile'),
     path('logout/',views.logout,name = 'logout'),  
-
-    
+    path('add/business/',views.add_bussiness,name = 'add_business'),
+    path('neighbourhood/<int:id>',views.location_view, name="location"),
+    path('hospital/<int:id>',views.hospital_view,name='hospital'),
+    path('business/<int:id>',views.business_view,name = 'business'),
+    path('police/<int:id>',views.police_view, name='police'),    
     
     
     
