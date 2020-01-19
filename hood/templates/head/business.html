@@ -1,0 +1,40 @@
+{% extends 'head/base.html'%}
+{% load bootstrap4%}
+{% load static%}
+{% block content%}
+<head>
+<style>
+body{
+    background-image:url();
+    background-color:#889696;
+    background-size:cover;
+    font-family: 'Cinzel', serif;
+    color:black;
+}
+#for{
+    margin-left: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 15px;
+}    
+</style>
+</head>
+<body style="margin-top: 150px;">
+    <div class="container">
+        <div class="card">
+            <h1 style="margin-bottom: 20px; text-align: center;margin-top: 15px; font-size: 31px;">{{bs.name}} business in {{bs.neighbourhood}}</h1>
+            <img src="{{bs.image.url}}" alt="{{Hospital.name}} image" class="img-responsive" style="height: 500px;">
+            <div class="details" style="margin-top: 35px;">
+                <h1 class="text-center" style="margin-bottom: 20px;">{{bs.name}} details</h1>
+                <hr>
+                <li id="for"><b>Name ::: </b>{{bs.name}}</li>
+                <li id="for"><b>Bussiness description</b><br>{{bs.description}}</li>
+                <li id="for"><b>Email address ::: </b>{{bs.email}}</li>
+                <li id="for"><b>Located at ::: </b>{{bs.neighbourhood}}</li>
+                <li id="for"><b>Bussiness owner ::: </b>{{bs.posted_by}}</li>
+            </div>
+        </div>
+    </div>
+</body>
+
+{% endblock%}

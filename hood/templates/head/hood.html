@@ -1,0 +1,76 @@
+{% extends 'head/base.html'%}
+{% load bootstrap4 %}
+{% load static %}
+{% block content %}
+<head>
+<style>
+#come{
+    font-size: 17px;
+    padding: 10px;
+    color:black
+}   
+body{
+    font-size: 16px;
+} 
+.col-md-4{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+        
+</style>
+</head>
+<body style="margin-top: 150px;">
+    <div class="container">
+
+        <div class="card">
+                <h1 class="text-center" style="margin-bottom: 20px;">{{location.name}} neighbourhood</h1>
+                <img src="{{location.image.url}}" alt="image" class="img-responsive" style="height: 500px;">
+                <div class="content" style="text-align: center; font-size: 16px;">
+                    <p><b>Location :::::  </b> {{location.location}}</p>
+                    <p><b>Occuppants of {{loccation.name}} ::::: </b> {{occupants.count}}</p>
+                    <p><b>Hospitals ::::: </b> {{hospital_list.count}}</p>
+                    <p><b>Police stations ::::: </b> {{police_list.count}}</p>
+                    <p><b>Established businesses ::::: </b> {{business_list.count}}</p>                    
+                </div>
+        </div>
+
+        <div class="row" style="margin-top: 60px;margin-bottom: 10px;">
+            <div class="col-md-4">
+                <div class="card" style="background-color: whitesmoke;">
+                    <h1 class="text-center" style="margin-bottom: 15px;">Businesses in {{location.name}}</h1><hr>
+                    <ul>
+
+                        {% for business in business_list%}
+                            <li id="come"><a href="/business/{{business.id}}" style="color:black;">{{business.name}}</a></li>
+                        {% empty%}
+                        <li>No bussiness is registered</li>
+                        {% endfor%}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="background-color: whitesmoke;">
+                    <h1 class="text-center" style="margin-bottom: 15px;">Police in {{location.name}}</h1><hr>
+                    <ul>
+
+                        {% for police in police_list %}
+                            <li id="come"><a href="/police/{{police.id}}" style="color: black;">{{police.name}}</a></li>
+                        {% endfor%}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="background-color: whitesmoke;">
+                    <h1 class="text-center" style="margin-bottom: 15px;">Hospitals in {{location.name}}</h1><hr>
+                    <ul>
+
+                        {% for hospital in hospital_list %}
+                            <li id="come"> <a href="/hospital/{{hospital.id}}" style="color: black;">{{hospital.name}}</a></li>
+                        {% endfor%}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

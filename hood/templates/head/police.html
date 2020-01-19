@@ -1,0 +1,39 @@
+{% extends 'head/base.html'%}
+{% load bootstrap4%}
+{% load static%}
+{% block content%}
+<head>
+<style>
+body{
+    background-image:url();
+    background-color:#889696;
+    background-size:cover;
+    font-family: 'Cinzel', serif;
+    color:black;
+}
+#from{
+    margin-left: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 15px;
+}    
+</style>
+</head>
+<body style="margin-top: 150px;">
+    <div class="container">
+        <div class="card" style="background-color: cadetblue;">
+            <h1 style="margin-bottom: 40px; text-align: center; margin-top: 30px; font-size: 35px;">{{plc.name}} in {{plc.neighbourhood}}</h1>
+            <img src="{{plc.image.url}}" alt="{{plc.name}} image" class="img-responsive" style="height: 500px;">
+            <div class="details" style="margin-top: 35px;">
+                <h1 class="text-center" style="margin-bottom: 20px;">{{plc.name}} details</h1>
+                <hr>
+                <li id="from"><b>Name ::: </b>{{plc.name}}</li>
+                <li id="from"><b>Emergency number ::: </b>{{plc.phone}}</li>
+                <li id="from"><b>Email address ::: </b>{{plc.email}}</li>
+                <li id="from"><b>Located at ::: </b>{{plc.neighbourhood}}</li>
+            </div>
+        </div>
+    </div>
+</body>
+
+{% endblock%}
