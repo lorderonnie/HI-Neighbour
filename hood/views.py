@@ -47,7 +47,6 @@ def newpost(request):
             post=form.save(commit=False)
             post.user = request.user
             post.save()
-            send_welcome_email(name,email)
             return redirect('home')
 
     else:

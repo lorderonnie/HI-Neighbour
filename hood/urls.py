@@ -10,7 +10,7 @@ urlpatterns = [
     path('hood/profile/',views.profile,name="profile"),
     url(r'^updateprofile/$',views.updateprofile,name='updateprofile'),
     path('logout/',views.logout,name = 'logout'),  
-    url(r'^home/',views.home,name='newpost'),
+
     
     
     
