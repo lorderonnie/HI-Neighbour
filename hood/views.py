@@ -1,10 +1,10 @@
 from django.shortcuts import get_object_or_404, redirect ,render
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404,HttpResponseRedirect
 from .models import Profile,Post
 from .forms import UpdateProfileForm,UserUpdateform,NewPostForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-
+from .email import send_welcome_email
 
 
 # Create your views here.
@@ -47,7 +47,7 @@ def newpost(request):
             post=form.save(commit=False)
             post.user = request.user
             post.save()
-
+            send_welcome_email(name,email)
             return redirect('home')
 
     else:
