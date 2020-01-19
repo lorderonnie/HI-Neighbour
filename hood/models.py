@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 import datetime
 # Create your models here.
 
-
 class Profile(models.Model):
     user  = models.OneToOneField(User, on_delete = models.CASCADE, default='')
     profile_pic = models.ImageField(upload_to = 'media/', default='default.jpg')
@@ -24,7 +23,6 @@ class Profile(models.Model):
 
         return  name 
     
-
 class Post(models.Model):
     picture = models.ImageField(upload_to= 'media/')
     caption= models.CharField(max_length=50)
@@ -48,4 +46,44 @@ class Post(models.Model):
     def delete_post(self):
         self.delete()
 
+class Health(models.Model):
+    neighbourhood = models.CharField(max_length=250)
+    email =  models.EmailField()
+    phone = models.IntegerField()
+    name = models.CharField(max_length=250)
+    image = models.ImageField(upload_to= 'post/',blank=True)
+    
+    def __str__(self):
+        return self.name
 
+class Neighbourhood(models.Model):
+    name = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
+    image = models.ImageField(upload_to= 'post/',blank=True)
+    
+    def __str__(self):
+        return self.name
+ 
+class Police(models.Model):
+    name = models.CharField(max_length=250)
+    email = models.EmailField()
+    phone = models.IntegerField()
+    neighbourhood = models.CharField(max_length=250)
+    image =  models.ImageField(upload_to= 'post/', default= 'default.jpg')
+    
+    def __str__(self):
+        return self.name
+    
+    
+    
+    
+class Business(models.Model):
+    posted_by = models.ForeignKey(User,on_delete = models.CASCADE)
+    neighbourhood = models.CharField(max_length=100)
+    email = models.EmailField()
+    name = models.CharField(max_length=250)
+    description = models.TextField(blank=True)
+    image =  models.ImageField(upload_to= 'post/', default= 'default.jpg')
+    
+    def __str__(self):
+        return self.name
