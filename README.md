@@ -11,7 +11,7 @@
 * Practice the code and try to perfect
 * Check PYTHON installations for any installations required
 ## Known Bugs
- None so far.
+ None so far.If any please email me contact info below.
 ## Technologies Used  
 PYTHON3.6-Used to basically run the program
 
