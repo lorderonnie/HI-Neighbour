@@ -73,7 +73,10 @@ class Police(models.Model):
     
     def __str__(self):
         return self.name
-    
+    @classmethod
+    def get_all_polices(cls):
+        polices = cls.objects.all()
+        return polices
     
     
     

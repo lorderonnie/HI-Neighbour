@@ -20,6 +20,11 @@ body{
 </style>
 </head>
 <body style="margin-top: 150px;">
+            <form action="{% url 'police' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <button type="submit" class="btn btn-outline-success">ENTER</button>
+            </form>
     <div class="container">
         <div class="card" style="background-color: cadetblue;">
             <h1 style="margin-bottom: 40px; text-align: center; margin-top: 30px; font-size: 35px;">{{plc.name}} in {{plc.neighbourhood}}</h1>

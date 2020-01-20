@@ -16,7 +16,7 @@
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark "style="background-color:#020122;background-image:url(https://i.ytimg.com/vi/u-SHHwAJDY8/maxresdefault.jpg);">
+<nav class="navbar navbar-expand-lg navbar-dark "style="background-color:#020122;">
   <a class="navbar-brand" href="/"><img src="https://www.creativefabrica.com/wp-content/uploads/2019/02/Monogram-HI-Logo-Design-by-Greenlines-Studios-580x387.jpg" alt="logo" style="border-radius:50%;position:absolute;bottom:10px;left:10px;" width="52px"height="52px"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -33,7 +33,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:#020122;background-image:url(https://i.ytimg.com/vi/u-SHHwAJDY8/maxresdefault.jpg);">
           <a class="dropdown-item" href="{% url 'profile' %}"><i class="fa fa-fw fa-user"></i>Profile</a>
-          <a href="{% url 'updateprofile'%}">Change hood</a>
+          <a class="dropdown-item" href="{% url 'updateprofile'%}">Change hood</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="/accounts/logout"><i class="fas fa-sign-out-alt"></i>logout</a>
         </div>
@@ -45,9 +45,9 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:#020122;background-image:url(https://i.ytimg.com/vi/u-SHHwAJDY8/maxresdefault.jpg);">
           <a class="dropdown-item" href="{% url 'add_business'%}"><i class="fa fa-fw fa-envelope"></i>New business</a>
                 {% for bs in business %}
-                  <li><a href="/business/{{bs.id}}">{{bs.name}}</a></li>
+                  <a class="dropdown-item" href="/business/{{bs.id}}">{{bs.name}}</a>
                   {% empty%}
-                  <li><a href="">No business found </a></li>
+                  <a class="dropdown-item" href="">No business found </a>
                   {% endfor%}
         </div>
       </li>
@@ -56,23 +56,13 @@
       </li>
        <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Other references
+         Neighbourhood
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:#020122;background-image:url(https://i.ytimg.com/vi/u-SHHwAJDY8/maxresdefault.jpg);">
-          <a class="dropdown-item" href="#">Police</a>
-                  {% for pol in police %}
-                  <li><a href="/police/{{pol.id}}">{{pol.name}}</a></li>
-                  {% empty%}
-                  <p>none found </p>
-                  {% endfor %}
-          <a class="dropdown-item" href="#">Hospitals</a>
-                  {% for hosi in hospitals%}
-                  <li><a href="/hospital/{{hosi.id}}">{{hosi.name}} </a></li>
-                  {% endfor%}
-          <a class="dropdown-item" href="#">the Hood</a>
-                {% for location in locations%}
-                <li><a href="/neighbourhood/{{location.id}}">{{location.name}} </a></li>
-                {% endfor%}
+          <a class="dropdown-item" href="{% url 'police'%}">Police stations</a>
+          <a class="dropdown-item" href="#">Hood</a>
+          <a class="dropdown-item" href="#">Hospital</a>
+
         </div>
       </li>
 

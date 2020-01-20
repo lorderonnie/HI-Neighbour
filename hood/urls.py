@@ -15,7 +15,7 @@ urlpatterns = [
     path('hospital/<int:id>',views.hospitalview,name='hospital'),
     path('business/<int:id>',views.businessview,name = 'business'),
     path('police/<int:id>',views.policeview, name='police'),    
-    
+    url(r'^police/',views.police,name='police'),
     
     
     

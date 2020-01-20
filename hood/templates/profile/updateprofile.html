@@ -19,9 +19,26 @@ body{
                 {% csrf_token%}
                {% bootstrap_form form1%}
                {% bootstrap_form form %}
+               <br><br>
+             
+                <select class="btn btn-dark" name="Location">
+                    <option name="">Location</option>
+                    <option name="" value="Nairobi">Nairobi</option>
+                    <option name="" value="Ngong">Ngong</option>
+                    <option name="" value="Thika">Thika</option>
+                    <option name="" value="Ruiru">Ruiru</option>
+                    <option name="" value="Rwaka">Rwaka</option>
+                    <option name="" value="Juja">Juja</option>
+                    <option name="" value="Kenol">Kenol</option>
+                    <option name="" value="Westlands">Westlands</option>
+                </select>
+                <br><br>
                 
                 <input type="submit" class="btn btn-primary" >
             </form>
+
+                
+
         </div>
     </div>
 </div>
