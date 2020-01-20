@@ -1,8 +1,8 @@
 # Hi-Neighbour
-####   ,19 January 2020 
+####  This is a web app to track info in ones neighbourhood ,19 January 2020 
 #### By **RONALD MWAMBIA**
 ## Description
-    
+    THis app shows diffrent info in ones neighbourhood from police info to hospital to even posts from your neighbour hood
 ## Setup/Installation Requirements
 * A database for Python and access to Django3
 * WI-FI or bundles to access the internet
